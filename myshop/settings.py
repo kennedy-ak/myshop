@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'shop',
     'cart.apps.CartConfig',
     'orders',
+    'payment',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,3 +133,28 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CART_SESSION_ID = 'cart'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# settings.py
+
+# Celery Configuration
+CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
+CELERY_RESULT_BACKEND = 'rpc://'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+
+
+# Braintree settings
+BRAINTREE_MERCHANT_ID = 'kmptzdg8dw46v6h3'  # Merchant ID
+BRAINTREE_PUBLIC_KEY = '22zyw9h8cn322rb3'   # Public Key
+BRAINTREE_PRIVATE_KEY = '1cb1b59ac51a47b91229072b098fb6ce'  # Private key
+import braintree
+BRAINTREE_CONF = braintree.Configuration(
+    braintree.Environment.Sandbox,
+    BRAINTREE_MERCHANT_ID,
+    BRAINTREE_PUBLIC_KEY,
+    BRAINTREE_PRIVATE_KEY
+)
