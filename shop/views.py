@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
 
+
 from cart.forms import CartAddProductForm
 # Create your views here.
 # to display all products in a given categoru

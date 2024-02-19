@@ -79,12 +79,23 @@ WSGI_APPLICATION = 'myshop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'shopify',
+        'USER': 'kenny',
+        'PASSWORD': 'shopify12',
+        'HOST': 'localhost',  # Or your PostgreSQL server IP
+        'PORT': '5432',       # Default PostgreSQL port
     }
 }
+
 
 
 # Password validation
@@ -134,7 +145,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CART_SESSION_ID = 'cart'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # settings.py
 
@@ -158,3 +169,10 @@ BRAINTREE_CONF = braintree.Configuration(
     BRAINTREE_PUBLIC_KEY,
     BRAINTREE_PRIVATE_KEY
 )
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'akogokennedy@gmail.com'
+EMAIL_HOST_PASSWORD = 'Akogo660221.'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
