@@ -16,7 +16,9 @@
           <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
         </li>
       {% endfor %}
+
     </ul>
+    {% include "blog/pagination.html" with page=cate %}
   </div>
   <div id="main" class="product-list">
     <h1>{% if category %}{{ category.name }}{% else %}Products
